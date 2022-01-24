@@ -1,7 +1,10 @@
 package io.github.cleanroommc.orangecore.api;
 
-import crafttweaker.api.item.IIngredient;
+import io.github.cleanroommc.airlock.api.ingredient.IIngredient;
 import io.github.cleanroommc.orangecore.OrangeCore;
+import io.github.cleanroommc.orangecore.OrangeCoreConfig;
+import io.github.cleanroommc.orangecore.OrangeCoreUtility;
+import io.github.cleanroommc.orangecore.capability.DumbStorage;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -9,9 +12,12 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Supplier;
 
 public class CapabilityFood {
@@ -116,7 +122,7 @@ public class CapabilityFood {
     public static ItemStack updateFoodDecayOnCreate(ItemStack stack) {
         IFood cap = stack.getCapability(CapabilityFood.CAPABILITY, null);
         if (cap != null) {
-            cap.setCreationDate(CalendarTFC.PLAYER_TIME.getTicks());
+            cap.setCreationDate(OrangeCoreUtility.getPlayerTickTime());
         }
         return stack;
     }
@@ -194,7 +200,7 @@ public class CapabilityFood {
      * @return Gets the creation date to set a piece of food to, in order to stack items created nearby in time
      */
     public static long getRoundedCreationDate() {
-        return ( / ConfigTFC.General.FOOD.decayStackTime) * ICalendar.TICKS_IN_HOUR * ConfigTFC.General.FOOD.decayStackTime;
+        return (OrangeCoreUtility.getPlayerTickTime() / OrangeCoreConfig.decayStackTime) * 20 * OrangeCoreConfig.decayStackTime;
     }
 
     /**
@@ -221,6 +227,6 @@ public class CapabilityFood {
      */
     private static long calculateNewCreationDate(long ci, float p) {
         // Cf = (1 - p) * T + p * Ci
-        return (long) ((1 - p) * CalendarTFC.PLAYER_TIME.getTicks() + p * ci);
+        return (long) ((1 - p) * OrangeCoreUtility.getPlayerTickTime() + p * ci);
     }
 }

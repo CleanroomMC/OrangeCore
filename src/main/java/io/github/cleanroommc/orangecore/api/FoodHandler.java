@@ -1,6 +1,5 @@
 package io.github.cleanroommc.orangecore.api;
 
-import io.github.cleanroommc.orangecore.OrangeCore;
 import io.github.cleanroommc.orangecore.OrangeCoreConfig;
 import io.github.cleanroommc.orangecore.OrangeCoreUtility;
 import net.minecraft.nbt.NBTTagCompound;
@@ -39,7 +38,7 @@ public class FoodHandler implements IFood, ICapabilitySerializable<NBTTagCompoun
         this(null, new FoodData(4, 0, 0, 0, 0, 0, 0, 0, 1));
     }
 
-    public FoodHandler(@Nullable NBTTagCompound nbt, @Nonnull Food food)
+    public FoodHandler(@Nullable NBTTagCompound nbt, @Nonnull FoodInfo food)
     {
         this(nbt, food.getData());
     }
@@ -103,7 +102,7 @@ public class FoodHandler implements IFood, ICapabilitySerializable<NBTTagCompoun
     public float getDecayDateModifier()
     {
         // Decay modifiers are higher = shorter
-        float mod = data.getDecayModifier() * (float) ConfigTFC.General.FOOD.decayModifier;
+        float mod = data.getDecayModifier() * (float) OrangeCoreConfig.decayModifier;
         for (FoodTrait trait : foodTraits)
         {
             mod *= trait.getDecayModifier();

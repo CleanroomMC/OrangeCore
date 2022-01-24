@@ -1,9 +1,9 @@
 buildscript {
     repositories {
         jcenter()
-        maven { 
-			url = "https://files.minecraftforge.net/maven" 
-		}
+        maven {
+            url = "https://files.minecraftforge.net/maven"
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
@@ -23,7 +23,7 @@ compileJava {
 minecraft {
     version = "1.12.2-14.23.5.2847"
     runDir = "run"
-    
+
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
@@ -35,10 +35,10 @@ minecraft {
 
 dependencies {
 
-	// Remove below comments if you want to an API to download external assets from
-	// deobfCompile ("com.github.CleanroomMC:AssetMover:0.2")
-    compile (files("etc/CraftTweaker2-1.12-4.1.20.670.jar"))
-
+    // Remove below comments if you want to an API to download external assets from
+    // deobfCompile ("com.github.CleanroomMC:AssetMover:0.2")
+    compile(files("etc/CraftTweaker2-1.12-4.1.20.670.jar"))
+    compile(files("libs/airlock-1.0.jar"))
 }
 
 processResources {
@@ -48,9 +48,9 @@ processResources {
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
+
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version': project.version, 'mcversion': project.minecraft.version
     }
     // copy everything else except the mcmod.info
     from(sourceSets.main.resources.srcDirs) {

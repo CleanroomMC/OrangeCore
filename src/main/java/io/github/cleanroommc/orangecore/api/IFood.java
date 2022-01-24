@@ -1,5 +1,9 @@
 package io.github.cleanroommc.orangecore.api;
 
+import io.github.cleanroommc.orangecore.CommonEventHandler;
+import io.github.cleanroommc.orangecore.OrangeCoreConfig;
+import io.github.cleanroommc.orangecore.OrangeCoreUtility;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -47,7 +51,7 @@ public interface IFood extends INBTSerializable<NBTTagCompound>
      */
     default boolean isRotten()
     {
-        return getRottenDate() < CalendarTFC.PLAYER_TIME.getTicks();
+        return getRottenDate() < OrangeCoreUtility.getPlayerTickTime();
     }
 
     /**
@@ -70,10 +74,9 @@ public interface IFood extends INBTSerializable<NBTTagCompound>
     float getDecayDateModifier();
 
     /**
-     * Called from {@link net.dries007.tfc.CommonEventHandler#attachItemCapabilities(AttachCapabilitiesEvent)}
+     * Called from {@link CommonEventHandler}
      * If the item is a food capability item, and it was created before the post init, we assume that it is a technical stack, and will not appear in the world without a copy. As such, we set it to non-decaying.
      * This is NOT SERIALIZED on the capability - as a result it will not persist across {@link ItemStack#copy()},
-     * See TerraFirmaCraft#458
      */
     void setNonDecaying();
 
@@ -101,37 +104,7 @@ public interface IFood extends INBTSerializable<NBTTagCompound>
         {
             text.add(TextFormatting.RED + I18n.format("tfc.tooltip.food_rotten"));
         }
-        else
-        {
-            long rottenDate = getRottenDate();
-            if (rottenDate == Long.MAX_VALUE)
-            {
-                text.add(TextFormatting.GOLD + I18n.format("tfc.tooltip.food_infinite_expiry"));
-            }
-            else
-            {
-                // Date food rots on.
-                long rottenCalendarTime = rottenDate - CalendarTFC.PLAYER_TIME.getTicks() + CalendarTFC.CALENDAR_TIME.getTicks();
-                // Days till food rots.
-                long daysToRotInTicks = rottenCalendarTime - CalendarTFC.CALENDAR_TIME.getTicks();
-                switch (ConfigTFC.Client.TOOLTIP.decayTooltipMode)
-                {
-                    case HIDE:
-                        break;
-                    case EXPIRATION_ONLY:
-                        text.add(TextFormatting.DARK_GREEN + I18n.format("tfc.tooltip.food_expiry_date", ICalendarFormatted.getTimeAndDate(rottenCalendarTime, CalendarTFC.CALENDAR_TIME.getDaysInMonth())));
-                        break;
-                    case TIME_REMAINING_ONLY:
-                        text.add(TextFormatting.BLUE + I18n.format("tfc.tooltip.food_expiry_date.days", String.valueOf(ICalendar.getTotalDays(daysToRotInTicks))));
-                        break;
-                    case ALL_INFO:
-                        text.add(TextFormatting.DARK_GREEN + I18n.format("tfc.tooltip.food_expiry_date", ICalendarFormatted.getTimeAndDate(rottenCalendarTime, CalendarTFC.CALENDAR_TIME.getDaysInMonth())));
-                        text.add(TextFormatting.BLUE + I18n.format("tfc.tooltip.food_expiry_date.days", String.valueOf(ICalendar.getTotalDays(daysToRotInTicks))));
-                        break;
-                }
-            }
-        }
-        if (ConfigTFC.General.DEBUG.enable)
+        if (OrangeCoreConfig.debug)
         {
             text.add("Created at " + getCreationDate());
         }
@@ -158,7 +131,7 @@ public interface IFood extends INBTSerializable<NBTTagCompound>
                 float value = getData().getNutrients()[nutrient.ordinal()];
                 if (value > 0)
                 {
-                    text.add(nutrient.getColor() + I18n.format("tfc.tooltip.nutrition_nutrient", I18n.format(Helpers.getEnumName(nutrient)), String.format("%.1f", value)));
+                    text.add(nutrient.getColor() + I18n.format("tfc.tooltip.nutrition_nutrient", I18n.format(nutrient.name()), String.format("%.1f", value)));
                 }
             }
         }

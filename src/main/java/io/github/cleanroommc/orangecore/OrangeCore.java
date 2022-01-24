@@ -20,16 +20,19 @@ public class OrangeCore {
     @SidedProxy(modId = MOD_ID, clientSide = "io.github.cleanroommc.orangecore.proxy.ClientProxy", serverSide = "io.github.cleanroommc.orangecore.proxy.CommonProxy")
     public static CommonProxy proxy;
 
-    private final Logger log = LogManager.getLogger(MOD_ID);
+    public final Logger log = LogManager.getLogger(MOD_ID);
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         log.info("OrangeCore preinit...");
-
     }
 
     @Mod.EventHandler
     public void onServerStart(FMLServerStartingEvent event) {
         OrangeCoreUtility.init(event.getServer());
+    }
+
+    public static Logger getLog() {
+        return INSTANCE.log;
     }
 }
