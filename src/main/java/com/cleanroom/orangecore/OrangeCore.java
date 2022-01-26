@@ -1,6 +1,6 @@
-package io.github.cleanroommc.orangecore;
+package com.cleanroom.orangecore;
 
-import io.github.cleanroommc.orangecore.proxy.CommonProxy;
+import com.cleanroom.orangecore.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;

@@ -1,7 +1,7 @@
-package io.github.cleanroommc.orangecore.api;
+package com.cleanroom.orangecore.api;
 
 import com.google.common.base.CaseFormat;
-import io.github.cleanroommc.orangecore.OrangeCoreUtility;
+import com.cleanroom.orangecore.OrangeCoreUtility;
 import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;

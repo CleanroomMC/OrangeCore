@@ -1,4 +1,4 @@
-package io.github.cleanroommc.orangecore.capability;
+package com.cleanroom.orangecore.capability;
 
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;

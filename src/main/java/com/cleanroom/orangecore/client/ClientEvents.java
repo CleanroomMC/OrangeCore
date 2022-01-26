@@ -1,8 +1,8 @@
-package io.github.cleanroommc.orangecore.client;
+package com.cleanroom.orangecore.client;
 
-import io.github.cleanroommc.orangecore.OrangeCore;
-import io.github.cleanroommc.orangecore.api.CapabilityFood;
-import io.github.cleanroommc.orangecore.api.IFood;
+import com.cleanroom.orangecore.api.CapabilityFood;
+import com.cleanroom.orangecore.api.IFood;
+import com.cleanroom.orangecore.OrangeCore;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;

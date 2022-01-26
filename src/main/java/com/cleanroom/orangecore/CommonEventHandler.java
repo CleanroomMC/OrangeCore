@@ -1,9 +1,9 @@
-package io.github.cleanroommc.orangecore;
+package com.cleanroom.orangecore;
 
-import io.github.cleanroommc.orangecore.api.CapabilityFood;
-import io.github.cleanroommc.orangecore.api.FoodData;
-import io.github.cleanroommc.orangecore.api.FoodHandler;
-import io.github.cleanroommc.orangecore.api.IItemFoodOC;
+import com.cleanroom.orangecore.api.CapabilityFood;
+import com.cleanroom.orangecore.api.FoodData;
+import com.cleanroom.orangecore.api.FoodHandler;
+import com.cleanroom.orangecore.api.IItemFoodOC;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;

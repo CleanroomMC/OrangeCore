@@ -1,4 +1,4 @@
-package io.github.cleanroommc.orangecore.api;
+package com.cleanroom.orangecore.api;
 
 import javax.annotation.Nonnull;
 

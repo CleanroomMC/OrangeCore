@@ -1,7 +1,7 @@
-package io.github.cleanroommc.orangecore.api;
+package com.cleanroom.orangecore.api;
 
-import io.github.cleanroommc.orangecore.OrangeCoreConfig;
-import io.github.cleanroommc.orangecore.OrangeCoreUtility;
+import com.cleanroom.orangecore.OrangeCoreConfig;
+import com.cleanroom.orangecore.OrangeCoreUtility;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;

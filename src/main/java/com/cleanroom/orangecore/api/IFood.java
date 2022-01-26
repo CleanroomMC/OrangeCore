@@ -1,8 +1,9 @@
-package io.github.cleanroommc.orangecore.api;
+package com.cleanroom.orangecore.api;
 
-import io.github.cleanroommc.orangecore.CommonEventHandler;
-import io.github.cleanroommc.orangecore.OrangeCoreConfig;
-import io.github.cleanroommc.orangecore.OrangeCoreUtility;
+import com.cleanroom.orangecore.client.ClientEvents;
+import com.cleanroom.orangecore.CommonEventHandler;
+import com.cleanroom.orangecore.OrangeCoreConfig;
+import com.cleanroom.orangecore.OrangeCoreUtility;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -91,7 +92,7 @@ public interface IFood extends INBTSerializable<NBTTagCompound>
 
     /**
      * Tooltip added to the food item
-     * Called from {@link io.github.cleanroommc.orangecore.client.ClientEvents}
+     * Called from {@link ClientEvents}
      *
      * @param stack the stack in question
      * @param text  the tooltip

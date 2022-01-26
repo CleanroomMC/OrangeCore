@@ -1,10 +1,10 @@
-package io.github.cleanroommc.orangecore.api;
+package com.cleanroom.orangecore.api;
 
-import io.github.cleanroommc.airlock.api.ingredient.IIngredient;
-import io.github.cleanroommc.orangecore.OrangeCore;
-import io.github.cleanroommc.orangecore.OrangeCoreConfig;
-import io.github.cleanroommc.orangecore.OrangeCoreUtility;
-import io.github.cleanroommc.orangecore.capability.DumbStorage;
+import com.cleanroom.orangecore.OrangeCore;
+import com.cleanroom.orangecore.OrangeCoreConfig;
+import com.cleanroom.orangecore.OrangeCoreUtility;
+import com.cleanroom.orangecore.capability.DumbStorage;
+import com.cleanroommc.airlock.api.ingredient.IIngredient;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

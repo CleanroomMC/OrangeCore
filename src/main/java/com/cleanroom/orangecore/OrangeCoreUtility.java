@@ -1,4 +1,4 @@
-package io.github.cleanroommc.orangecore;
+package com.cleanroom.orangecore;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
