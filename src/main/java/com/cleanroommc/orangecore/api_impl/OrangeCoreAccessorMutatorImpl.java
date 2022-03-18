@@ -1,5 +1,6 @@
 package com.cleanroommc.orangecore.api_impl;
 
+import com.cleanroommc.orangecore.api.IItemFoodOC;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -96,7 +97,7 @@ public enum OrangeCoreAccessorMutatorImpl implements IOrangeCoreAccessor, IOrang
 
 	private FoodValues getItemFoodValues(@Nonnull ItemFood itemFood, @Nonnull ItemStack itemStack)
 	{
-		return new FoodValues(itemFood.getHealAmount(itemStack), itemFood.getSaturationModifier(itemStack));
+		return new FoodValues(itemFood.getHealAmount(itemStack), itemFood.getSaturationModifier(itemStack), ((IItemFoodOC)itemFood).getNutrientData(itemStack));
 	}
 
 	@Override

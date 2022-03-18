@@ -116,17 +116,12 @@ public interface IFood extends INBTSerializable<NBTTagCompound>
         {
             text.add(TextFormatting.DARK_GREEN + I18n.format("tfc.tooltip.nutrition"));
 
-            float saturation = getData().getSaturation();
-            if (saturation > 0)
-            {
-                // This display makes it so 100% saturation means a full hunger bar worth of saturation.
-                text.add(TextFormatting.GRAY + I18n.format("tfc.tooltip.nutrition_saturation", String.format("%d", (int) (saturation * 5))));
-            }
             float water = getData().getWater();
             if (water > 0)
             {
                 text.add(TextFormatting.GRAY + I18n.format("tfc.tooltip.nutrition_water", String.format("%d", (int) water)));
             }
+/* TODO
             for (Nutrient nutrient : Nutrient.values())
             {
                 float value = getData().getNutrients()[nutrient.ordinal()];
@@ -135,6 +130,7 @@ public interface IFood extends INBTSerializable<NBTTagCompound>
                     text.add(nutrient.getColor() + I18n.format("tfc.tooltip.nutrition_nutrient", I18n.format(nutrient.name()), String.format("%.1f", value)));
                 }
             }
+*/
         }
         else
         {

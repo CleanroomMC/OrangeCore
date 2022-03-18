@@ -24,7 +24,7 @@ public class OrangeCore implements IFMLLoadingPlugin {
     @Mod.Instance
     private static OrangeCore INSTANCE = null;
 
-    @SidedProxy(modId = MOD_ID, clientSide = "io.github.cleanroommc.orangecore.proxy.ClientProxy", serverSide = "io.github.cleanroommc.orangecore.proxy.CommonProxy")
+    @SidedProxy(modId = MOD_ID, clientSide = "com.cleanroommc.orangecore.proxy.ClientProxy", serverSide = "com.cleanroommc.orangecore.proxy.CommonProxy")
     public static CommonProxy proxy;
 
     public final Logger log = LogManager.getLogger(MOD_ID);

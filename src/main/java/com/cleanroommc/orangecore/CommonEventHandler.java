@@ -12,7 +12,7 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class CommonEventHandler {
-    @SubscribeEvent
+/*    @SubscribeEvent
     public static void attachItemCapabilities(AttachCapabilitiesEvent<ItemStack> event)
     {
         ItemStack stack = event.getObject();
@@ -29,5 +29,5 @@ public class CommonEventHandler {
                 event.addCapability(CapabilityFood.KEY, foodHandler);
             }
         }
-    }
+    }*/
 }

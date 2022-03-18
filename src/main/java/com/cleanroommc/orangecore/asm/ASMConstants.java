@@ -4,30 +4,30 @@ import com.cleanroommc.airlock.api.asm.ASMHelper;
 
 public class ASMConstants
 {
-	public static final String HOOKS = "squeek.applecore.asm.Hooks";
+	public static final String HOOKS = "com.cleanroommc.orangecore.asm.Hooks";
 	public static final String HOOKS_INTERNAL_CLASS = ASMHelper.toInternalClassName(HOOKS);
-	public static final String FOOD_VALUES = "squeek.applecore.api.food.FoodValues";
-	public static final String IAPPLECOREFOODSTATS = "squeek.applecore.asm.util.IAppleCoreFoodStats";
-	public static final String IEDIBLEBLOCK = "squeek.applecore.api.food.IEdibleBlock";
-	public static final String IEDIBLE = "squeek.applecore.api.food.IEdible";
+	public static final String FOOD_VALUES = "com.cleanroommc.orangecore.api.food.FoodValues";
+	public static final String IAPPLECOREFOODSTATS = "com.cleanroommc.orangecore.asm.util.IAppleCoreFoodStats";
+	public static final String IEDIBLEBLOCK = "com.cleanroommc.orangecore.api.food.IEdibleBlock";
+	public static final String IEDIBLE = "com.cleanroommc.orangecore.api.food.IEdible";
 
 	public static final class ExhaustionEvent
 	{
-		public static final String EXHAUSTED = "squeek.applecore.api.hunger.ExhaustionEvent$Exhausted";
-		public static final String EXHAUSTING_ACTIONS = "squeek.applecore.api.hunger.ExhaustionEvent$ExhaustingActions";
+		public static final String EXHAUSTED = "com.cleanroommc.orangecore.api.hunger.ExhaustionEvent$Exhausted";
+		public static final String EXHAUSTING_ACTIONS = "com.cleanroommc.orangecore.api.hunger.ExhaustionEvent$ExhaustingActions";
 	}
 	public static final class HealthRegenEvent
 	{
-		public static final String REGEN = "squeek.applecore.api.hunger.HealthRegenEvent$Regen";
-		public static final String PEACEFUL_REGEN = "squeek.applecore.api.hunger.HealthRegenEvent$PeacefulRegen";
+		public static final String REGEN = "com.cleanroommc.orangecore.api.hunger.HealthRegenEvent$Regen";
+		public static final String PEACEFUL_REGEN = "com.cleanroommc.orangecore.api.hunger.HealthRegenEvent$PeacefulRegen";
 	}
 	public static final class HungerRegenEvent
 	{
-		public static final String PEACEFUL_REGEN = "squeek.applecore.api.hunger.HungerRegenEvent$PeacefulRegen";
+		public static final String PEACEFUL_REGEN = "com.cleanroommc.orangecore.api.hunger.HungerRegenEvent$PeacefulRegen";
 	}
 	public static final class StarvationEvent
 	{
-		public static final String STARVE = "squeek.applecore.api.hunger.StarvationEvent$Starve";
+		public static final String STARVE = "com.cleanroommc.orangecore.api.hunger.StarvationEvent$Starve";
 	}
 
 	//Java

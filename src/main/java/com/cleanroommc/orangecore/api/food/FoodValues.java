@@ -1,9 +1,10 @@
 package com.cleanroommc.orangecore.api.food;
 
+import com.cleanroommc.orangecore.api.NutrientData;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import com.cleanroommc.orangecore.api.OrangeCoreAPI;
 import com.cleanroommc.orangecore.api.IOrangeCoreAccessor;
+import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
@@ -22,11 +23,19 @@ public class FoodValues
 {
 	public final int hunger;
 	public final float saturationModifier;
+	public NutrientData nutrientData = new NutrientData();
 
 	public FoodValues(int hunger, float saturationModifier)
 	{
 		this.hunger = hunger;
 		this.saturationModifier = saturationModifier;
+	}
+
+	public FoodValues(int hunger, float saturationModifier, NutrientData nutrientData)
+	{
+		this.hunger = hunger;
+		this.saturationModifier = saturationModifier;
+		this.nutrientData = nutrientData;
 	}
 
 	public FoodValues(FoodValues other)

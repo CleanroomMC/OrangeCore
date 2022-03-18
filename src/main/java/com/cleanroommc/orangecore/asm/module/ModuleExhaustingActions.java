@@ -100,9 +100,9 @@ public class ModuleExhaustingActions implements IClassTransformerModule
 	/*
 	ALOAD 0
     ALOAD 0
-    GETSTATIC squeek/applecore/api/hunger/ExhaustionEvent$ExhaustingActions.SPRINTING_JUMP : Lsqueek/applecore/api/hunger/ExhaustionEvent$ExhaustingActions;
+    GETSTATIC com/cleanroommc/orangecore/api/hunger/ExhaustionEvent$ExhaustingActions.SPRINTING_JUMP : Lcom/cleanroommc/orangecore/api/hunger/ExhaustionEvent$ExhaustingActions;
     LDC 0.2
-    INVOKESTATIC squeek/applecore/asm/Hooks.fireExhaustingActionEvent (Lnet/minecraft/entity/player/EntityPlayer;Lsqueek/applecore/api/hunger/ExhaustionEvent$ExhaustingActions;F)F
+    INVOKESTATIC com/cleanroommc/orangecore/asm/Hooks.fireExhaustingActionEvent (Lnet/minecraft/entity/player/EntityPlayer;Lcom/cleanroommc/orangecore/api/hunger/ExhaustionEvent$ExhaustingActions;F)F
     INVOKEVIRTUAL net/minecraft/entity/player/EntityPlayer.addExhaustion (F)V
 	 */
 

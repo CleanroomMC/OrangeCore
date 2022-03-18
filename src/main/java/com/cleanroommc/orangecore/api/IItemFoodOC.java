@@ -9,13 +9,12 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
  *
  * WHY:
  * - OrangeCore will attach a food capability instance for EVERY {@link net.minecraft.item.ItemFood} subclass.
- * - Capabilities that are attached using initCapabilities are not visible to TFC
- * - When duplicate capabilities get attached, they will decay independently and can lead to stackability issues where invisible capability instances are preventing calls such as {@link CapabilityFood#areStacksStackableExceptCreationDate(ItemStack, ItemStack)}
  */
+
 public interface IItemFoodOC
 {
     /**
      * @return A capability provider which exposes an {@link IFood} capability, e.g. {@link FoodHandler}
      */
-    ICapabilityProvider getCustomFoodHandler();
+    NutrientData getNutrientData(ItemStack stack);
 }

@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "1.0"
-group = "io.github.cleanroommc.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "com.cleanroommc.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "modid"
 
 sourceCompatibility = targetCompatibility = '1.8'
@@ -39,6 +39,7 @@ dependencies {
     // deobfCompile ("com.github.CleanroomMC:AssetMover:0.2")
     compile(files("etc/CraftTweaker2-1.12-4.1.20.670.jar"))
     compile(files("libs/airlock-1.0.jar"))
+    deobfCompile "mezz.jei:jei_1.12.2:+"
 }
 
 processResources {

@@ -68,11 +68,13 @@ public class FoodData implements INBTSerializable<NBTTagCompound> {
         nbt.setFloat("sat", saturation);
         nbt.setFloat("water", water);
         nbt.setFloat("decay", decayModifier);
+/*
         nbt.setFloat("grain", nutrients[Nutrient.GRAIN.ordinal()]);
         nbt.setFloat("veg", nutrients[Nutrient.VEGETABLES.ordinal()]);
         nbt.setFloat("fruit", nutrients[Nutrient.FRUIT.ordinal()]);
         nbt.setFloat("meat", nutrients[Nutrient.PROTEIN.ordinal()]);
         nbt.setFloat("dairy", nutrients[Nutrient.DAIRY.ordinal()]);
+*/
         nbt.setBoolean("buffed", buffed);
         return nbt;
     }
@@ -84,11 +86,13 @@ public class FoodData implements INBTSerializable<NBTTagCompound> {
             saturation = nbt.getFloat("sat");
             water = nbt.getFloat("water");
             decayModifier = nbt.getFloat("decay");
+/*
             nutrients[Nutrient.GRAIN.ordinal()] = nbt.getFloat("grain");
             nutrients[Nutrient.VEGETABLES.ordinal()] = nbt.getFloat("veg");
             nutrients[Nutrient.FRUIT.ordinal()] = nbt.getFloat("fruit");
             nutrients[Nutrient.PROTEIN.ordinal()] = nbt.getFloat("meat");
             nutrients[Nutrient.DAIRY.ordinal()] = nbt.getFloat("dairy");
+*/
             buffed = nbt.getBoolean("buffed");
         }
     }
@@ -98,12 +102,12 @@ public class FoodData implements INBTSerializable<NBTTagCompound> {
     }
 
     public void applyBuff(FoodData buff) {
-        if (!buffed) {
+        /*if (!buffed) {
             buffed = true;
             for (Nutrient nutrient : Nutrient.values()) {
                 nutrients[nutrient.ordinal()] += buff.nutrients[nutrient.ordinal()];
             }
-        }
+        }*/
     }
 }
 

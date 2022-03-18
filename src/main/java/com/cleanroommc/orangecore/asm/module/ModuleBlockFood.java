@@ -46,15 +46,15 @@ public class ModuleBlockFood implements IClassTransformerModule
 		classNode.interfaces.add(ASMHelper.toInternalClassName(ASMConstants.IEDIBLE));
 		classNode.interfaces.add(ASMHelper.toInternalClassName(ASMConstants.IEDIBLEBLOCK));
 
-		MethodVisitor mv = classNode.visitMethod(ACC_PUBLIC, "getFoodValues", "(Lnet/minecraft/item/ItemStack;)Lsqueek/applecore/api/food/FoodValues;", null, null);
+		MethodVisitor mv = classNode.visitMethod(ACC_PUBLIC, "getFoodValues", "(Lnet/minecraft/item/ItemStack;)Lcom/cleanroommc/orangecore/api/food/FoodValues;", null, null);
 		mv.visitCode();
 		Label l0 = new Label();
 		mv.visitLabel(l0);
-		mv.visitTypeInsn(NEW, "squeek/applecore/api/food/FoodValues");
+		mv.visitTypeInsn(NEW, "com/cleanroommc/orangecore/api/food/FoodValues");
 		mv.visitInsn(DUP);
 		mv.visitInsn(ICONST_2);
 		mv.visitLdcInsn(new Float("0.1"));
-		mv.visitMethodInsn(INVOKESPECIAL, "squeek/applecore/api/food/FoodValues", "<init>", "(IF)V", false);
+		mv.visitMethodInsn(INVOKESPECIAL, "com/cleanroommc/orangecore/api/food/FoodValues", "<init>", "(IF)V", false);
 		mv.visitInsn(ARETURN);
 		Label l1 = new Label();
 		mv.visitLabel(l1);
