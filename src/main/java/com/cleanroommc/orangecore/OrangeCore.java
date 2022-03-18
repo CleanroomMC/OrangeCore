@@ -1,5 +1,7 @@
 package com.cleanroommc.orangecore;
 
+import com.cleanroommc.orangecore.api_impl.OrangeCoreAccessorMutatorImpl;
+import com.cleanroommc.orangecore.api_impl.OrangeCoreRegistryImpl;
 import com.cleanroommc.orangecore.asm.TransformerModuleHandler;
 import com.cleanroommc.orangecore.proxy.CommonProxy;
 import com.cleanroommc.airlock.api.asm.ObfHelper;
@@ -32,6 +34,9 @@ public class OrangeCore implements IFMLLoadingPlugin {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         log.info("OrangeCore preinit...");
+        OrangeCoreAccessorMutatorImpl.values(); // Initialize the "simpletons" inside
+        OrangeCoreRegistryImpl.values();
+
     }
 
     @Mod.EventHandler

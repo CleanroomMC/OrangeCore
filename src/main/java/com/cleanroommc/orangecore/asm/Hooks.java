@@ -50,24 +50,24 @@ public class Hooks
 		}
 	}
 
-	public static boolean onAppleCoreFoodStatsUpdate(FoodStats foodStats, EntityPlayer player)
+	public static boolean onOrangeCoreFoodStatsUpdate(FoodStats foodStats, EntityPlayer player)
 	{
 		verifyFoodStats(foodStats, player);
 
-		IOrangeCoreFoodStats appleCoreFoodStats = (IOrangeCoreFoodStats) foodStats;
+		IOrangeCoreFoodStats orangeCoreFoodStats = (IOrangeCoreFoodStats) foodStats;
 
-		appleCoreFoodStats.setPrevFoodLevel(foodStats.getFoodLevel());
+		orangeCoreFoodStats.setPrevFoodLevel(foodStats.getFoodLevel());
 
 		Result allowExhaustionResult = Hooks.fireAllowExhaustionEvent(player);
-		float maxExhaustion = Hooks.fireExhaustionTickEvent(player, appleCoreFoodStats.getExhaustion());
-		if (allowExhaustionResult == Result.ALLOW || (allowExhaustionResult == Result.DEFAULT && appleCoreFoodStats.getExhaustion() >= maxExhaustion))
+		float maxExhaustion = Hooks.fireExhaustionTickEvent(player, orangeCoreFoodStats.getExhaustion());
+		if (allowExhaustionResult == Result.ALLOW || (allowExhaustionResult == Result.DEFAULT && orangeCoreFoodStats.getExhaustion() >= maxExhaustion))
 		{
-			ExhaustionEvent.Exhausted exhaustedEvent = Hooks.fireExhaustionMaxEvent(player, maxExhaustion, appleCoreFoodStats.getExhaustion());
+			ExhaustionEvent.Exhausted exhaustedEvent = Hooks.fireExhaustionMaxEvent(player, maxExhaustion, orangeCoreFoodStats.getExhaustion());
 
-			appleCoreFoodStats.setExhaustion(appleCoreFoodStats.getExhaustion() + exhaustedEvent.deltaExhaustion);
+			orangeCoreFoodStats.setExhaustion(orangeCoreFoodStats.getExhaustion() + exhaustedEvent.deltaExhaustion);
 			if (!exhaustedEvent.isCanceled())
 			{
-				appleCoreFoodStats.setSaturation(Math.max(foodStats.getSaturationLevel() + exhaustedEvent.deltaSaturation, 0.0F));
+				orangeCoreFoodStats.setSaturation(Math.max(foodStats.getSaturationLevel() + exhaustedEvent.deltaSaturation, 0.0F));
 				foodStats.setFoodLevel(Math.max(foodStats.getFoodLevel() + exhaustedEvent.deltaHunger, 0));
 			}
 		}
@@ -80,9 +80,9 @@ public class Hooks
 		boolean shouldDoRegen = allowRegenResult == Result.ALLOW || (allowRegenResult == Result.DEFAULT && hasNaturalRegen && foodStats.getFoodLevel() >= 18 && player.shouldHeal());
 		if (shouldDoSaturatedRegen)
 		{
-			appleCoreFoodStats.setFoodTimer(appleCoreFoodStats.getFoodTimer() + 1);
+			orangeCoreFoodStats.setFoodTimer(orangeCoreFoodStats.getFoodTimer() + 1);
 
-			if (appleCoreFoodStats.getFoodTimer() >= Hooks.fireSaturatedRegenTickEvent(player))
+			if (orangeCoreFoodStats.getFoodTimer() >= Hooks.fireSaturatedRegenTickEvent(player))
 			{
 				HealthRegenEvent.SaturatedRegen saturatedRegenEvent = Hooks.fireSaturatedRegenEvent(player);
 				if (!saturatedRegenEvent.isCanceled())
@@ -90,14 +90,14 @@ public class Hooks
 					player.heal(saturatedRegenEvent.deltaHealth);
 					foodStats.addExhaustion(saturatedRegenEvent.deltaExhaustion);
 				}
-				appleCoreFoodStats.setFoodTimer(0);
+				orangeCoreFoodStats.setFoodTimer(0);
 			}
 		}
 		else if (shouldDoRegen)
 		{
-			appleCoreFoodStats.setFoodTimer(appleCoreFoodStats.getFoodTimer() + 1);
+			orangeCoreFoodStats.setFoodTimer(orangeCoreFoodStats.getFoodTimer() + 1);
 
-			if (appleCoreFoodStats.getFoodTimer() >= Hooks.fireRegenTickEvent(player))
+			if (orangeCoreFoodStats.getFoodTimer() >= Hooks.fireRegenTickEvent(player))
 			{
 				HealthRegenEvent.Regen regenEvent = Hooks.fireRegenEvent(player);
 				if (!regenEvent.isCanceled())
@@ -105,32 +105,32 @@ public class Hooks
 					player.heal(regenEvent.deltaHealth);
 					foodStats.addExhaustion(regenEvent.deltaExhaustion);
 				}
-				appleCoreFoodStats.setFoodTimer(0);
+				orangeCoreFoodStats.setFoodTimer(0);
 			}
 		}
 		else
 		{
-			appleCoreFoodStats.setFoodTimer(0);
+			orangeCoreFoodStats.setFoodTimer(0);
 		}
 
 		Result allowStarvationResult = Hooks.fireAllowStarvation(player);
 		if (allowStarvationResult == Result.ALLOW || (allowStarvationResult == Result.DEFAULT && foodStats.getFoodLevel() <= 0))
 		{
-			appleCoreFoodStats.setStarveTimer(appleCoreFoodStats.getStarveTimer() + 1);
+			orangeCoreFoodStats.setStarveTimer(orangeCoreFoodStats.getStarveTimer() + 1);
 
-			if (appleCoreFoodStats.getStarveTimer() >= Hooks.fireStarvationTickEvent(player))
+			if (orangeCoreFoodStats.getStarveTimer() >= Hooks.fireStarvationTickEvent(player))
 			{
 				StarvationEvent.Starve starveEvent = Hooks.fireStarveEvent(player);
 				if (!starveEvent.isCanceled())
 				{
 					player.attackEntityFrom(DamageSource.STARVE, starveEvent.starveDamage);
 				}
-				appleCoreFoodStats.setStarveTimer(0);
+				orangeCoreFoodStats.setStarveTimer(0);
 			}
 		}
 		else
 		{
-			appleCoreFoodStats.setStarveTimer(0);
+			orangeCoreFoodStats.setStarveTimer(0);
 		}
 
 		return true;

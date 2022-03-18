@@ -50,7 +50,7 @@ public class FoodStatsModifications extends FoodStats {
     @Override
     public void onUpdate(EntityPlayer player) {
         // added lines
-        if (Hooks.onAppleCoreFoodStatsUpdate(this, player))
+        if (Hooks.onOrangeCoreFoodStatsUpdate(this, player))
             return;
 
         // the body of the base function

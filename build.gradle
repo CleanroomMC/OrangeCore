@@ -38,8 +38,9 @@ dependencies {
     // Remove below comments if you want to an API to download external assets from
     // deobfCompile ("com.github.CleanroomMC:AssetMover:0.2")
     compile(files("etc/CraftTweaker2-1.12-4.1.20.670.jar"))
+    compile(files("etc/jei_1.12.2-4.16.1.301.jar"))
     compile(files("libs/airlock-1.0.jar"))
-    deobfCompile "mezz.jei:jei_1.12.2:+"
+
 }
 
 processResources {
@@ -56,5 +57,12 @@ processResources {
     // copy everything else except the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+    }
+}
+
+jar {
+    manifest {
+        attributes 'FMLCorePlugin': 'com.cleanroommc.orangecore.OrangeCore'
+        attributes 'FMLCorePluginContainsFMLMod': 'true'
     }
 }

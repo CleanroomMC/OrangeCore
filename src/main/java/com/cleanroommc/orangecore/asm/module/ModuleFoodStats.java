@@ -48,8 +48,8 @@ public class ModuleFoodStats implements IClassTransformerModule
 			// add starveTimer field
 			classNode.fields.add(new FieldNode(ACC_PUBLIC, foodStatsStarveTimerField, "I", null, null));
 
-			// IAppleCoreFoodStats implementation
-			classNode.interfaces.add(ASMHelper.toInternalClassName(ASMConstants.IAPPLECOREFOODSTATS));
+			// IOrangeCoreFoodStats implementation
+			classNode.interfaces.add(ASMHelper.toInternalClassName(ASMConstants.IORANGECOREFOODSTATS));
 			tryAddFieldGetter(classNode, "getFoodTimer", ObfHelper.isObfuscated() ? "field_75123_d" : "foodTimer", "I");
 			tryAddFieldSetter(classNode, "setFoodTimer", ObfHelper.isObfuscated() ? "field_75123_d" : "foodTimer", "I");
 			tryAddFieldGetter(classNode, "getStarveTimer", foodStatsStarveTimerField, "I");
@@ -332,7 +332,7 @@ public class ModuleFoodStats implements IClassTransformerModule
 		InsnList toInject = new InsnList();
 		toInject.add(new VarInsnNode(ALOAD, 0));
 		toInject.add(new VarInsnNode(ALOAD, 1));
-		toInject.add(new MethodInsnNode(INVOKESTATIC, ASMHelper.toInternalClassName(ASMConstants.HOOKS), "onAppleCoreFoodStatsUpdate", ASMHelper.toMethodDescriptor("Z", ASMConstants.FOOD_STATS, ASMConstants.PLAYER), false));
+		toInject.add(new MethodInsnNode(INVOKESTATIC, ASMHelper.toInternalClassName(ASMConstants.HOOKS), "onOrangeCoreFoodStatsUpdate", ASMHelper.toMethodDescriptor("Z", ASMConstants.FOOD_STATS, ASMConstants.PLAYER), false));
 		toInject.add(new JumpInsnNode(IFEQ, ifSkipReturn));
 		toInject.add(new LabelNode());
 		toInject.add(new InsnNode(RETURN));

@@ -7,7 +7,7 @@ public class ASMConstants
 	public static final String HOOKS = "com.cleanroommc.orangecore.asm.Hooks";
 	public static final String HOOKS_INTERNAL_CLASS = ASMHelper.toInternalClassName(HOOKS);
 	public static final String FOOD_VALUES = "com.cleanroommc.orangecore.api.food.FoodValues";
-	public static final String IAPPLECOREFOODSTATS = "com.cleanroommc.orangecore.asm.util.IAppleCoreFoodStats";
+	public static final String IORANGECOREFOODSTATS = "com.cleanroommc.orangecore.asm.util.IOrangeCoreFoodStats";
 	public static final String IEDIBLEBLOCK = "com.cleanroommc.orangecore.api.food.IEdibleBlock";
 	public static final String IEDIBLE = "com.cleanroommc.orangecore.api.food.IEdible";
 
