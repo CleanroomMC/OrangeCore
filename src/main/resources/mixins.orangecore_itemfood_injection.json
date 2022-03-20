@@ -1,0 +1,10 @@
+{
+  "package": "com.cleanroommc.orangecore.asm.mixin",
+  "refmap": "mixins.orangecore.refmap.json",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "ItemFoodMixin"
+  ]
+}

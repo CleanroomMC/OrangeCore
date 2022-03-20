@@ -4,16 +4,21 @@ buildscript {
         maven {
             url = "https://files.minecraftforge.net/maven"
         }
+        maven {
+            url = 'https://repo.spongepowered.org/maven'
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'org.spongepowered.mixin'
 
 version = "1.0"
-group = "com.cleanroommc.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+group = "com.cleanroommc.orangecore"
+archivesBaseName = "orangecore"
 
 sourceCompatibility = targetCompatibility = '1.8'
 compileJava {
@@ -41,6 +46,7 @@ dependencies {
     compile(files("etc/jei_1.12.2-4.16.1.301.jar"))
     compile(files("libs/airlock-1.0.jar"))
 
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 processResources {
@@ -64,5 +70,16 @@ jar {
     manifest {
         attributes 'FMLCorePlugin': 'com.cleanroommc.orangecore.OrangeCore'
         attributes 'FMLCorePluginContainsFMLMod': 'true'
+        def attribute_map = [:]
+        attribute_map['TweakClass'] = 'org.spongepowered.asm.launch.MixinTweaker'
+        attributes(attribute_map)
     }
+}
+
+sourceSets {
+
+    main {
+        ext.refMap = 'mixins.' + archivesBaseName + '.refmap.json'
+    }
+
 }
