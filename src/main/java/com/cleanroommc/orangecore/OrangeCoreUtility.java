@@ -15,7 +15,7 @@ public class OrangeCoreUtility {
 
     public static boolean doesStackMatchOre(@Nonnull ItemStack stack, String name) {
         if (!OreDictionary.doesOreNameExist(name)) {
-            OrangeCore.getLog().warn(String.format("doesStackMatchOre called with non-existing name. stack: {} name: {}", stack.toString(), name));
+            OrangeCoreMod.getLog().warn(String.format("doesStackMatchOre called with non-existing name. stack: {} name: {}", stack.toString(), name));
             return false;
         }
         if (stack.isEmpty()) return false;

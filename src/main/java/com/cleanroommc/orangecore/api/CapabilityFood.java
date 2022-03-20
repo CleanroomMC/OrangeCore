@@ -2,6 +2,7 @@ package com.cleanroommc.orangecore.api;
 
 import com.cleanroommc.orangecore.OrangeCore;
 import com.cleanroommc.orangecore.OrangeCoreConfig;
+import com.cleanroommc.orangecore.OrangeCoreMod;
 import com.cleanroommc.orangecore.OrangeCoreUtility;
 import com.cleanroommc.orangecore.capability.DumbStorage;
 import com.cleanroommc.airlock.api.ingredient.IIngredient;
@@ -21,7 +22,7 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 public class CapabilityFood {
-    public static final ResourceLocation KEY = new ResourceLocation(OrangeCore.MOD_ID, "food");
+    public static final ResourceLocation KEY = new ResourceLocation(OrangeCoreMod.MOD_ID, "food");
     public static final Map<IIngredient<ItemStack>, Supplier<ICapabilityProvider>> CUSTOM_FOODS = new HashMap<>(); //Used inside CT, set custom IFood for food items outside TFC
     /**
      * Most TFC foods have decay modifiers in the range [1, 4] (high = faster decay)

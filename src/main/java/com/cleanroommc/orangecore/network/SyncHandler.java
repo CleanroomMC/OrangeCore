@@ -1,6 +1,7 @@
 package com.cleanroommc.orangecore.network;
 
 import com.cleanroommc.orangecore.OrangeCore;
+import com.cleanroommc.orangecore.OrangeCoreMod;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.WorldServer;
@@ -15,7 +16,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class SyncHandler
 {
-	public static final SimpleNetworkWrapper CHANNEL = NetworkRegistry.INSTANCE.newSimpleChannel(OrangeCore.MOD_ID);
+	public static final SimpleNetworkWrapper CHANNEL = NetworkRegistry.INSTANCE.newSimpleChannel(OrangeCoreMod.MOD_ID);
 
 	public static void init()
 	{

@@ -12,41 +12,18 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.spongepowered.asm.launch.MixinBootstrap;
+import org.spongepowered.asm.mixin.Mixins;
 
 import java.util.Map;
 
 @IFMLLoadingPlugin.SortingIndex(1100)
 @IFMLLoadingPlugin.MCVersion("1.12.2")
-@Mod.EventBusSubscriber
-@Mod(modid = OrangeCore.MOD_ID, name = OrangeCore.MOD_NAME)
 public class OrangeCore implements IFMLLoadingPlugin {
-    public static final String MOD_ID = "orangecore";
-    public static final String MOD_NAME = "OrangeCore";
-
-    @Mod.Instance
-    private static OrangeCore INSTANCE = null;
-
-    @SidedProxy(modId = MOD_ID, clientSide = "com.cleanroommc.orangecore.proxy.ClientProxy", serverSide = "com.cleanroommc.orangecore.proxy.CommonProxy")
-    public static CommonProxy proxy;
-
-    public final Logger log = LogManager.getLogger(MOD_ID);
-
-    @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        log.info("OrangeCore preinit...");
-        OrangeCoreAccessorMutatorImpl.values(); // Initialize the "simpletons" inside
-        OrangeCoreRegistryImpl.values();
-
-    }
-
-    @Mod.EventHandler
-    public void onServerStart(FMLServerStartingEvent event) {
-        OrangeCoreUtility.init(event.getServer());
-    }
-
-    public static Logger getLog() {
-        return INSTANCE.log;
-    }
+/*    public OrangeCore() {
+        MixinBootstrap.init();
+        Mixins.addConfigurations("mixins.orangecore_itemfood_injection.json");
+    }*/
 
     @Override
     public String[] getASMTransformerClass() {

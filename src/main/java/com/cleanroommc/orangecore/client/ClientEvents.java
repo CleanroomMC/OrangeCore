@@ -1,5 +1,6 @@
 package com.cleanroommc.orangecore.client;
 
+import com.cleanroommc.orangecore.OrangeCoreMod;
 import com.cleanroommc.orangecore.api.CapabilityFood;
 import com.cleanroommc.orangecore.api.IFood;
 import com.cleanroommc.orangecore.OrangeCore;
@@ -13,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = OrangeCore.MOD_ID)
+@Mod.EventBusSubscriber(modid = OrangeCoreMod.MOD_ID)
 public class ClientEvents {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
