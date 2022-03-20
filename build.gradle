@@ -77,7 +77,6 @@ processResources {
 jar {
     manifest {
         attributes 'FMLCorePlugin': 'com.cleanroommc.orangecore.OrangeCore'
-        attributes 'FMLCorePluginContainsFMLMod': 'true'
         attributes 'ForceLoadAsMod': true
         def attribute_map = [:]
         attribute_map['TweakClass'] = 'org.spongepowered.asm.launch.MixinTweaker'

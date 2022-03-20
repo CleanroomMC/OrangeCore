@@ -20,10 +20,10 @@ import java.util.Map;
 @IFMLLoadingPlugin.SortingIndex(1100)
 @IFMLLoadingPlugin.MCVersion("1.12.2")
 public class OrangeCore implements IFMLLoadingPlugin {
-/*    public OrangeCore() {
+    public OrangeCore() {
         MixinBootstrap.init();
         Mixins.addConfigurations("mixins.orangecore_itemfood_injection.json");
-    }*/
+    }
 
     @Override
     public String[] getASMTransformerClass() {
