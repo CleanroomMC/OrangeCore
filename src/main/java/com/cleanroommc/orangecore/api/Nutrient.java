@@ -68,10 +68,10 @@ public class Nutrient
      * @return A function which applies the specified effect to the player when the player has less than 20 of said nutrient.
      */
     public static BiFunction<Float, EntityPlayer, Float> basicNutrientFormulaWithSideEffect(float decreasePerTick, Potion effect) {
-        PotionEffect modifiedEffect = new PotionEffect(effect, 1);
+        PotionEffect modifiedEffect = new PotionEffect(effect, 100);
         modifiedEffect.setCurativeItems(Collections.EMPTY_LIST);
         return (value, player) -> {
-            if (value < -20)
+            if (value < -20 && !player.getActivePotionMap().containsKey(effect))
                 player.addPotionEffect(modifiedEffect);
             return value - decreasePerTick;
         };
