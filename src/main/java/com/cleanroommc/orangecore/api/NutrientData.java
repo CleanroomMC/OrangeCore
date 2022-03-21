@@ -22,11 +22,19 @@ public class NutrientData implements INBTSerializable<NBTTagCompound> { // Prett
     public void deserializeNBT(NBTTagCompound nbt) {
         nutrientFloatMap.clear();
         for(String nutrientId : nbt.getKeySet()) {
-            nutrientFloatMap.put(NutrientRegistry.NUTRIENT_REGISTRY.getObject(nutrientId),nbt.getFloat(nutrientId));
+            nutrientFloatMap.put(Nutrient.NUTRIENTS.get(nutrientId), nbt.getFloat(nutrientId));
         }
     }
 
     public void addNutrient(Nutrient nutrient, float value) {
         nutrientFloatMap.put(nutrient, value);
+    }
+
+    public float getNutrient(Nutrient nutrient) {
+        return nutrientFloatMap.getOrDefault(nutrient, 0f);
+    }
+
+    public Map<Nutrient, Float> getUnderlyingMap() {
+        return new HashMap<>(nutrientFloatMap);
     }
 }

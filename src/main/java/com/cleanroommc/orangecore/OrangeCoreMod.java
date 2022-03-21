@@ -1,5 +1,6 @@
 package com.cleanroommc.orangecore;
 
+import com.cleanroommc.orangecore.api.capability.NutritionCapability;
 import com.cleanroommc.orangecore.api_impl.OrangeCoreAccessorMutatorImpl;
 import com.cleanroommc.orangecore.api_impl.OrangeCoreRegistryImpl;
 import com.cleanroommc.orangecore.proxy.CommonProxy;
@@ -31,6 +32,10 @@ public class OrangeCoreMod {
         OrangeCoreAccessorMutatorImpl.values(); // Initialize the "simpletons" inside
         OrangeCoreRegistryImpl.values();
 
+        if(OrangeCoreConfig.debug)
+            OrangeCoreExample.init();
+
+        NutritionCapability.preInit();
     }
 
     @Mod.EventHandler
