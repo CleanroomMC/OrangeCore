@@ -9,6 +9,8 @@ public class Commands
 	{
 		CommandHandler commandHandler = (CommandHandler) server.getCommandManager();
 
+		commandHandler.registerCommand(new CommandGetNutrients());
 		commandHandler.registerCommand(new CommandHunger());
+		commandHandler.registerCommand(new CommandNutrition());
 	}
 }

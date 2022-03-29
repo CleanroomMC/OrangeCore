@@ -1,0 +1,7 @@
+orangecore.commands.hunger.usage=/hunger [player] <value>
+orangecore.commands.hunger.set.hunger.to=Set %s's hunger to %d
+orangecore.commands.nutrition.usage=/nutrition [player] <nutrient> <value>
+orangecore.commands.nutrition.get.nutrient=%s has %d of nutrient %s
+orangecore.commands.nutrition.set.nutrient.to=Set %s's nutrition in nutrient %s to %d
+orangecore.commands.nutrition.usage.nocapability=The player did not have accessible nutrient data
+orangecore.commands.getnutrients.usage=/getnutrients [player]

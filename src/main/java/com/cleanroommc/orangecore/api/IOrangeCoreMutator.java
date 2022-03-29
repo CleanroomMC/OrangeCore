@@ -15,6 +15,11 @@ public interface IOrangeCoreMutator
 	void setHunger(EntityPlayer player, int hunger);
 
 	/**
+	 * Sets the nutrient level of the {@code player} to value, normalized from -1 to 1.
+	 */
+	void setNutrient(EntityPlayer player, Nutrient nutrient, int value);
+
+	/**
 	 * Sets the saturation level of the {@code player}.
 	 */
 	void setSaturation(EntityPlayer player, float saturation);

@@ -44,6 +44,8 @@ public class CommonEventHandler {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+
+
         if (event.player.hasCapability(NutritionCapability.CAPABILITY, null)) {
             INutritionStats stats = event.player.getCapability(NutritionCapability.CAPABILITY, null);
             stats.updateNutrients(event.player);

@@ -26,7 +26,7 @@ public class CommandHunger extends CommandBase
 	@Nonnull
 	public String getUsage(@Nonnull ICommandSender sender)
 	{
-		return "applecore.commands.hunger.usage";
+		return "orangecore.commands.hunger.usage";
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class CommandHunger extends CommandBase
 			if (playerToActOn.getFoodStats().getSaturationLevel() > newHunger)
 				OrangeCoreAPI.mutator.setSaturation(playerToActOn, newHunger);
 
-			notifyCommandListener(commandSender, this, 1, "applecore.commands.hunger.set.hunger.to", playerToActOn.getDisplayName(), newHunger);
+			notifyCommandListener(commandSender, this, 1, "orangecore.commands.hunger.set.hunger.to", playerToActOn.getDisplayName(), newHunger);
 		}
 		else
 		{

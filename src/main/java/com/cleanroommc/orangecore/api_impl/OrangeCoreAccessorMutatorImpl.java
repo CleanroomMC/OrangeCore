@@ -1,6 +1,7 @@
 package com.cleanroommc.orangecore.api_impl;
 
-import com.cleanroommc.orangecore.api.IItemFoodOC;
+import com.cleanroommc.orangecore.api.*;
+import com.cleanroommc.orangecore.api.capability.NutritionCapability;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -8,9 +9,6 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
-import com.cleanroommc.orangecore.api.OrangeCoreAPI;
-import com.cleanroommc.orangecore.api.IOrangeCoreAccessor;
-import com.cleanroommc.orangecore.api.IOrangeCoreMutator;
 import com.cleanroommc.orangecore.api.food.FoodEvent;
 import com.cleanroommc.orangecore.api.food.FoodValues;
 import com.cleanroommc.orangecore.api.food.IEdible;
@@ -131,7 +129,7 @@ public enum OrangeCoreAccessorMutatorImpl implements IOrangeCoreAccessor, IOrang
 	{
 		try
 		{
-			return getAppleCoreFoodStats(player).getExhaustion();
+			return getOrangeCoreFoodStats(player).getExhaustion();
 		}
 		catch (RuntimeException e)
 		{
@@ -191,7 +189,7 @@ public enum OrangeCoreAccessorMutatorImpl implements IOrangeCoreAccessor, IOrang
 	{
 		try
 		{
-			getAppleCoreFoodStats(player).setExhaustion(exhaustion);
+			getOrangeCoreFoodStats(player).setExhaustion(exhaustion);
 		}
 		catch (RuntimeException e)
 		{
@@ -210,11 +208,18 @@ public enum OrangeCoreAccessorMutatorImpl implements IOrangeCoreAccessor, IOrang
 	}
 
 	@Override
+	public void setNutrient(EntityPlayer player, Nutrient nutrient, int value) {
+		if(player.hasCapability(NutritionCapability.CAPABILITY, null)) {
+			player.getCapability(NutritionCapability.CAPABILITY, null).setNutrientValue(nutrient, value);
+		}
+	}
+
+	@Override
 	public void setSaturation(EntityPlayer player, float saturation)
 	{
 		try
 		{
-			getAppleCoreFoodStats(player).setSaturation(saturation);
+			getOrangeCoreFoodStats(player).setSaturation(saturation);
 		}
 		catch (RuntimeException e)
 		{
@@ -231,7 +236,7 @@ public enum OrangeCoreAccessorMutatorImpl implements IOrangeCoreAccessor, IOrang
 	{
 		try
 		{
-			getAppleCoreFoodStats(player).setFoodTimer(tickCounter);
+			getOrangeCoreFoodStats(player).setFoodTimer(tickCounter);
 		}
 		catch (RuntimeException e)
 		{
@@ -248,7 +253,7 @@ public enum OrangeCoreAccessorMutatorImpl implements IOrangeCoreAccessor, IOrang
 	{
 		try
 		{
-			getAppleCoreFoodStats(player).setStarveTimer(tickCounter);
+			getOrangeCoreFoodStats(player).setStarveTimer(tickCounter);
 		}
 		catch (RuntimeException e)
 		{
@@ -260,7 +265,7 @@ public enum OrangeCoreAccessorMutatorImpl implements IOrangeCoreAccessor, IOrang
 		}
 	}
 
-	public IOrangeCoreFoodStats getAppleCoreFoodStats(EntityPlayer player) throws ClassCastException
+	public IOrangeCoreFoodStats getOrangeCoreFoodStats(EntityPlayer player) throws ClassCastException
 	{
 		return (IOrangeCoreFoodStats) player.getFoodStats();
 	}

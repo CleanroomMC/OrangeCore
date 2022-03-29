@@ -10,11 +10,13 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Map;
 
 public class NutritionStatsHandler implements INutritionStats, ICapabilitySerializable<NBTTagCompound> {
     private NutrientData playerNutrientData;
     private EntityPlayer player;
+
+    private float previousHunger;
+    private float hungerDelta;
 
     public NutritionStatsHandler(EntityPlayer player) {
         this.player = player;
@@ -31,6 +33,16 @@ public class NutritionStatsHandler implements INutritionStats, ICapabilitySerial
     @Override
     public float getNutrientValue(Nutrient nutrient) {
         return playerNutrientData.getNutrient(nutrient);
+    }
+
+    @Override
+    public void setNutrientValue(Nutrient nutrient, float value) {
+        playerNutrientData.addNutrient(nutrient, value);
+    }
+
+    @Override
+    public float getHungerDelta() {
+        return hungerDelta;
     }
 
     @Override
@@ -59,6 +71,8 @@ public class NutritionStatsHandler implements INutritionStats, ICapabilitySerial
 
     @Override
     public void updateNutrients(EntityPlayer player) {
+        hungerDelta = previousHunger - player.getFoodStats().getFoodLevel();
+        previousHunger = player.getFoodStats().getFoodLevel();
         for(Nutrient nutrient : Nutrient.NUTRIENTS.values()) {
             if (nutrient.isEnabled())
                 playerNutrientData.addNutrient(nutrient, nutrient.update(playerNutrientData.getNutrient(nutrient), player));

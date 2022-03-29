@@ -11,5 +11,9 @@ public interface INutritionStats {
 
     float getNutrientValue(Nutrient nutrient);
 
+    void setNutrientValue(Nutrient nutrient, float value);
+
+    float getHungerDelta();
+
     void updateNutrients(EntityPlayer player);
 }

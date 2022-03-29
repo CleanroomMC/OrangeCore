@@ -1,5 +1,6 @@
 package com.cleanroommc.orangecore.api;
 
+import com.cleanroommc.orangecore.api.capability.NutritionCapability;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -50,7 +51,8 @@ public class Nutrient
     }
 
     public float update(float value, EntityPlayer player) {
-        return this.updater.apply(value, player);
+        float result = this.updater.apply(value, player);
+        return ((result > 1) ? 1 : ((result < -1) ? -1 : result)); // Clamps result between -1 and 1.
     }
 
     public void enable(boolean enabled) {
@@ -62,18 +64,34 @@ public class Nutrient
     }
 
     /**
-     *
-     * @param decreasePerTick
-     * @param effect
-     * @return A function which applies the specified effect to the player when the player has less than 20 of said nutrient.
+     * Returns a lambda which can be used for easily setting up a nutrient's behavior.
+     * @param decreasePerTick Sets how much the nutrient's concentration will decrease each tick (SHOULD NOT BE NEGATIVE)
+     * @param effect The effect which will be applied once the nutrient goes below -0.75.
+     * @return A function which applies the specified effect to the player when the player has less than -0.75 of said nutrient.
      */
-    public static BiFunction<Float, EntityPlayer, Float> basicNutrientFormulaWithSideEffect(float decreasePerTick, Potion effect) {
+    public static BiFunction<Float, EntityPlayer, Float> constantNutrientFormulaWithSideEffect(float decreasePerTick, Potion effect) {
         PotionEffect modifiedEffect = new PotionEffect(effect, 100);
         modifiedEffect.setCurativeItems(Collections.EMPTY_LIST);
         return (value, player) -> {
-            if (value < -20 && !player.getActivePotionMap().containsKey(effect))
-                player.addPotionEffect(modifiedEffect);
+            if (value < -0.75 && !player.getActivePotionMap().containsKey(effect))
+                player.addPotionEffect(new PotionEffect(modifiedEffect));
             return value - decreasePerTick;
+        };
+    }
+
+    /**
+     * Returns a lambda which can be used for easily setting up a nutrient's behavior.
+     * @param decreasePerHunger Sets how much the nutrient's concentration will decrease each tick (SHOULD NOT BE NEGATIVE)
+     * @param effect The effect which will be applied once the nutrient goes below -0.75.
+     * @return A function which applies the specified effect to the player when the player has less than -0.75 of said nutrient.
+     */
+    public static BiFunction<Float, EntityPlayer, Float> basicNutrientFormulaWithSideEffect(float decreasePerHunger, Potion effect) {
+        PotionEffect modifiedEffect = new PotionEffect(effect, 100);
+        modifiedEffect.setCurativeItems(Collections.EMPTY_LIST);
+        return (value, player) -> {
+            if (value < -0.75 && !player.getActivePotionMap().containsKey(effect))
+                player.addPotionEffect(new PotionEffect(modifiedEffect));
+            return value - (decreasePerHunger * player.getCapability(NutritionCapability.CAPABILITY, null).getHungerDelta());
         };
     }
 }

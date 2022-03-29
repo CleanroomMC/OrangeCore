@@ -3,6 +3,7 @@ package com.cleanroommc.orangecore;
 import com.cleanroommc.orangecore.api.capability.NutritionCapability;
 import com.cleanroommc.orangecore.api_impl.OrangeCoreAccessorMutatorImpl;
 import com.cleanroommc.orangecore.api_impl.OrangeCoreRegistryImpl;
+import com.cleanroommc.orangecore.commands.Commands;
 import com.cleanroommc.orangecore.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -41,6 +42,7 @@ public class OrangeCoreMod {
     @Mod.EventHandler
     public void onServerStart(FMLServerStartingEvent event) {
         OrangeCoreUtility.init(event.getServer());
+        Commands.init(event.getServer());
     }
 
     public static Logger getLog() {
