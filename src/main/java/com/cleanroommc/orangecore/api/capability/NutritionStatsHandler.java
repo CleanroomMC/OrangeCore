@@ -23,7 +23,6 @@ public class NutritionStatsHandler implements INutritionStats, ICapabilitySerial
         this.playerNutrientData = new NutrientData();
     }
 
-
     @Nonnull
     @Override
     public EntityPlayer getPlayer() {

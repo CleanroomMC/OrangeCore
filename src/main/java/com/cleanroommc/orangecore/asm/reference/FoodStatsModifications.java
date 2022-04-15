@@ -1,5 +1,6 @@
 package com.cleanroommc.orangecore.asm.reference;
 
+import com.cleanroommc.orangecore.api.NutrientData;
 import com.cleanroommc.orangecore.api.food.FoodValues;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
@@ -16,6 +17,7 @@ public class FoodStatsModifications extends FoodStats {
     // added fields
     EntityPlayer player;
     int starveTimer;
+    NutrientData nutrientData;
 
     // added constructor
     public FoodStatsModifications(EntityPlayer player) {

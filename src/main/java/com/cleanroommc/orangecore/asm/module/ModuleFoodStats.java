@@ -15,6 +15,7 @@ public class ModuleFoodStats implements IClassTransformerModule
 {
 	public static String foodStatsPlayerField = "entityplayer";
 	public static String foodStatsStarveTimerField = "starveTimer";
+	public static String foodStatsNutrientDataField = "nutrientData";
 
 	@Override
 	public String[] getClassesToTransform()
@@ -47,6 +48,8 @@ public class ModuleFoodStats implements IClassTransformerModule
 
 			// add starveTimer field
 			classNode.fields.add(new FieldNode(ACC_PUBLIC, foodStatsStarveTimerField, "I", null, null));
+			// add nutrientData field
+			classNode.fields.add(new FieldNode(ACC_PUBLIC, foodStatsNutrientDataField, ASMHelper.toDescriptor(ASMConstants.NUTRIENT_DATA), null, null));
 
 			// IOrangeCoreFoodStats implementation
 			classNode.interfaces.add(ASMHelper.toInternalClassName(ASMConstants.IORANGECOREFOODSTATS));

@@ -1,6 +1,5 @@
 package com.cleanroommc.orangecore.network;
 
-import com.cleanroommc.orangecore.OrangeCore;
 import com.cleanroommc.orangecore.OrangeCoreMod;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.EnumDifficulty;
@@ -21,6 +20,9 @@ public class SyncHandler
 	public static void init()
 	{
 		CHANNEL.registerMessage(MessageDifficultySync.class, MessageDifficultySync.class, 0, Side.CLIENT);
+		CHANNEL.registerMessage(new MessageNutritionStatsUpdate.Handler(), MessageNutritionStatsUpdate.class, 1, Side.CLIENT);
+
+
 
 		MinecraftForge.EVENT_BUS.register(new SyncHandler());
 	}
@@ -37,6 +39,7 @@ public class SyncHandler
 			return;
 
 		CHANNEL.sendTo(new MessageDifficultySync(event.player.world.getDifficulty()), (EntityPlayerMP) event.player);
+		CHANNEL.sendTo(new MessageNutritionStatsUpdate(event.player), (EntityPlayerMP) event.player);
 	}
 
 	@SubscribeEvent

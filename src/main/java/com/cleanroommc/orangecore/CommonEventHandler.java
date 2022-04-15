@@ -35,8 +35,7 @@ public class CommonEventHandler {
     public static void attachPlayerCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getObject();
-            if (!player.hasCapability(NutritionCapability.CAPABILITY, null))
-            {
+            if (!player.hasCapability(NutritionCapability.CAPABILITY, null)) {
                 event.addCapability(NutritionCapability.KEY, new NutritionStatsHandler(player));
             }
         }

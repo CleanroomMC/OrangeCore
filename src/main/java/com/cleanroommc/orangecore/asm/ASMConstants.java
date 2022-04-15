@@ -10,6 +10,7 @@ public class ASMConstants
 	public static final String IORANGECOREFOODSTATS = "com.cleanroommc.orangecore.asm.util.IOrangeCoreFoodStats";
 	public static final String IEDIBLEBLOCK = "com.cleanroommc.orangecore.api.food.IEdibleBlock";
 	public static final String IEDIBLE = "com.cleanroommc.orangecore.api.food.IEdible";
+	public static final String NUTRIENT_DATA = "com.cleanroommc.orangecore.api.NutrientData";
 
 	public static final class ExhaustionEvent
 	{
